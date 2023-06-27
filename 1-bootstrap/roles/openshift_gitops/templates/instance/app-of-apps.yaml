@@ -1,0 +1,9 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps
+  namespace: {{ gitops_instance_namespace }}
+spec:
+  source:
+    repoURL: {{ git_src }}
+    path: 2-infra/clusters/{{ cluster_name }}

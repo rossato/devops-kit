@@ -1,0 +1,16 @@
+apiVersion: operator.openshift.io/v1
+kind: IngressController
+metadata:
+  name: external
+  namespace: openshift-ingress-operator
+spec:
+  domain: ext-apps.domain.com
+  namespaceSelector:
+    matchLabels:
+      zone: external
+  endpointPublishingStrategy:
+    hostNetwork:
+      httpPort: 81
+      httpsPort: 444
+      statsPort: 1937
+    type: HostNetwork

@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: quarkus-getting-started
+  namespace: app-gitops
+spec:
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: quarkus-getting-started
+    server: 'https://kubernetes.default.svc'
+  - namespace: app-gitops
+    server: 'https://kubernetes.default.svc'
+  roles:
+  - description: Quarkus app admins
+    groups:
+    - quarkus-admins
+    name: quarkus-admins
+    policies:
+    - p, proj:quarkus-getting-started:quarkus-admins, applications, *, demo/*, allow
+    - p, proj:quarkus-getting-started:quarkus-admins, repositories, *, demo/*, allow

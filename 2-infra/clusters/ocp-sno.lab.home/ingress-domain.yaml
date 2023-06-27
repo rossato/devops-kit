@@ -1,0 +1,7 @@
+apiVersion: operator.openshift.io/v1
+kind: IngressController
+metadata:
+  name: external
+  namespace: openshift-ingress-operator
+spec:
+  domain: ext-apps.ocp-sno.lab.home

@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: quarkus-ci
+  namespace: app-gitops
+spec:
+  project: quarkus-getting-started
+  sources:
+  - repoURL: http://gogs-gogs.apps.ocp-sno.lab.home/ken/gitops.git
+    targetRevision: HEAD
+    path: 4-cicd/tekton-pipeline
+    helm:
+      valueFiles:
+        - $values/3-apps/quarkus-getting-started/ci-values.yaml
+  - repoURL: http://gogs-gogs.apps.ocp-sno.lab.home/ken/gitops.git
+    targetRevision: HEAD
+    ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: quarkus-getting-started

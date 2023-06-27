@@ -1,0 +1,27 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: demo
+  namespace: demo
+  labels:
+    app: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+        deployment: demo
+    spec:
+      containers:
+        - name: demo
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/http-test/httpd-sample@sha256:e6fe43b351a7eb6c55341ead18726e111f17f13aa3c0a1adca234fc964650e33
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 8443
+              protocol: TCP

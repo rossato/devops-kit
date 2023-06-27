@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: demo
+  namespace: app-gitops
+spec:
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: demo
+    server: 'https://kubernetes.default.svc'
+  roles:
+  - description: Demo app admins
+    groups:
+    - demo-admins
+    name: demo-admins
+    policies:
+    - p, proj:demo:demo-admins, applications, *, demo/*, allow
+    - p, proj:demo:demo-admins, repositories, *, demo/*, allow

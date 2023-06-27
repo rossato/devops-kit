@@ -1,0 +1,72 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  workspaces:
+  - name: scratch
+  - name: maven-settings
+  tasks:
+  - name: checkout
+    taskRef:
+      kind: ClusterTask
+      name: git-clone
+    params:
+    - name: url
+      value: {{ .Values.source.url }}
+    - name: revision
+      value: {{ .Values.source.revision }}
+    workspaces:
+    - name: output
+      workspace: scratch
+  - name: build
+    taskRef:
+      kind: ClusterTask
+      name: maven
+    params:
+{{- with .Values.build.goals }}
+    - name: GOALS
+      value:
+{{- range . }}
+        - {{.}}
+{{- end }}
+{{- end }}
+{{- with .Values.build.image }}
+    - name: MAVEN_IMAGE
+      value: {{ . }}
+{{- end }}
+{{- with .Values.source.contextDir }}
+    - name: context-dir
+      value: {{ . }}
+{{- end }}
+    runAfter:
+    - checkout
+    workspaces:
+    - name: source
+      workspace: scratch
+    - name: maven-settings
+      workspace: maven-settings
+  - name: build-image
+    taskRef:
+      kind: ClusterTask
+      name: buildah
+    params:
+{{- with .Values.source.contextDir }}
+    - name: CONTEXT
+      value: {{ . }}
+{{- end }}
+{{- with .Values.buildImage.dockerfile }}
+    - name: DOCKERFILE
+      value: {{ . }}
+{{- end }}
+{{- with .Values.buildImage.tlsVerify }}
+    - name: TLSVERIFY
+      value: {{ . | quote }}
+{{- end }}
+    - name: IMAGE
+      value: image-registry.openshift-image-registry.svc:5000/{{ .Release.Namespace }}/{{ .Values.name }}:{{ .Values.buildImage.tag | default "latest" }}
+    runAfter:
+    - build
+    workspaces:
+    - name: source
+      workspace: scratch

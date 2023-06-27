@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: quarkus-app
+  namespace: app-gitops
+spec:
+  project: quarkus-getting-started
+  source:
+    repoURL: http://gogs-gogs.apps.ocp-sno.lab.home/ken/gitops.git
+    targetRevision: HEAD
+    path: 4-cicd/generic-app
+    helm:
+      parameters:
+      - name: image.name
+        value: quarkus-getting-started
+      - name: image.tag
+        value: latest
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: quarkus-getting-started

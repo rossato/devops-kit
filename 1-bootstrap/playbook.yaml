@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  vars:
+    cluster_name: ocp-sno.lab.home
+    git_src: http://gogs-gogs.apps.ocp-sno.lab.home/ken/gitops.git
+  gather_facts: false
+  tasks:
+    - import_role:
+        name: openshift_gitops
+        tasks_from: deploy.yml
