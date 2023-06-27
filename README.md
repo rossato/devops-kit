@@ -28,7 +28,7 @@ The "app" Argo instance uses `AppProjects` to isolate app teams from each other.
 
 ### 3-apps
 
-This contains the dev-team-facing resources needed to manage applications.  The permission model should allow these resources to be edited by dev teams directly in their own repowithout the need for IT-team sign-off.
+This contains the dev-team-facing resources needed to manage applications.  The permission model should allow these resources to be edited by dev teams directly in their own repo without the need for IT-team sign-off.
 
 * `demo`: a simple, Kustomize-based deployment
 * `quarkus-getting-started`: a Helm-based deployment and Helm-deployed Tekton CI pipeline
