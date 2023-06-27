@@ -14,6 +14,8 @@ This contains an Ansible playbook to initialize a newly-installed cluster.  It c
 * Installation of the Red Hat `openshift-gitops` operator, including installation of the default ArgoCD instance
 * Installation of a root infrastructure "App of apps"
 
+The openshift_common and openshift_gitops roles are modifications of the excellent work done by Ales Nosek and contributors at https://github.com/noseka1/ansible-base.  These roles are offered under their original Apache 2.0 license (license text in the 1-bootstrap folder).
+
 ### 2-infra
 
 The infrastructure "app of apps" points to a directory with the cluster name under the `clusters/` directory.  This is expected to point to other resources in the `2-infra` repo that are needed to prepare a cluster for users:
