@@ -1,0 +1,22 @@
+- name: Find oc-mirror workspace assets
+  ansible.builtin.shell: "ls -dr {{ openshift_disconnected_oc_mirror_workspace }} | head -n 1"
+  register: oc_mirror_results
+
+- debug: msg="Using oc-mirror results path {{ oc_mirror_results }}"
+
+- name: Find CatalogSources in workspace
+  ansible.builtin.find:
+    paths: "{{ oc_mirror_results }}"
+    patterns: "catalogSource-*.yaml"
+    register: oc_mirror_catalogSources
+
+- debug: msg="Using {{ oc_mirror_catalogSources.matched }} CatalogSources"
+
+- name: Install ImageContentSourcePolicy
+  kubernetes.core.k8s:
+    src: {{ oc_mirror_results }}/imageContentSourcePolicy.yaml
+
+- name: Install CatalogSources
+  kubernetes.core.k8s:
+    src: {{ item.path }}
+  loop: "{{ oc_mirror_catalogSources.files }}"

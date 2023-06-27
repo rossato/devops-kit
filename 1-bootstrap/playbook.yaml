@@ -3,8 +3,13 @@
   vars:
     cluster_name: ocp-sno.lab.home
     git_src: http://gogs-gogs.apps.ocp-sno.lab.home/ken/gitops.git
+    disconnected: false
   gather_facts: false
   tasks:
+    - import_role:
+        name: openshift_disconnected
+        tasks_from: deploy.yml
+      when: disconnected
     - import_role:
         name: openshift_gitops
         tasks_from: deploy.yml
