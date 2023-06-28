@@ -1,8 +1,8 @@
 - name: Disable built-in catalog sources
-  ansible.builtin.shell: "oc patch OperatorHub cluster --type json -p \'[{\"op\": \"add\", \"path\": \"/spec/disableAllDefaultSources\", \"value\": true}]\'"
-
-- name: Verify patched OperatorHub
-  ansible.builtin.shell: "oc get OperatorHub cluster -o jsonpath='{.spec.disableAllDefaultSources}'"
-  register: olm_patched
-
-- debug: msg="OperatorHub reports disableAllDefaultSources={{ olm_patched.stdout }}"
+  kubernetes.core.k8s_json_patch:
+    kind: OperatorHub
+    name: cluster
+    patch:
+      - op: add
+        path: /spec/disableAllDefaultSources
+        value: true
