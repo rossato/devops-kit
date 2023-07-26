@@ -6,7 +6,7 @@ metadata:
   namespace: {{ $.Values.gitopsNamespace }}
 spec:
   source:
-{{ . | indent 4 }}
+{{ . | toYaml | indent 4 }}
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ $.Values.gitopsNamespace }}
