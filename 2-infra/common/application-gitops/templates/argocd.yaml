@@ -1,0 +1,81 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  name: {{ .Values.groupName }}
+  namespace: {{ .Values.gitopsNamespace }}
+spec:
+  server:
+    route:
+      enabled: true
+  resourceExclusions: |
+    - apiGroups:
+      - tekton.dev
+      clusters:
+      - '*'
+      kinds:
+      - TaskRun
+      - PipelineRun
+  resourceInclusions: |
+    - apiGroups:
+      - ''
+      clusters:
+      - '*'
+      kinds:
+      - ConfigMap
+      - PersistentVolumeClaim
+      - Service
+      - ServiceAccount
+    - apiGroups:
+      - apps
+      clusters:
+      - '*'
+      kinds:
+      - Deployment
+      - StatefulSet
+    - apiGroups:
+      - apps.openshift.io
+      clusters:
+      - '*'
+      kinds:
+      - DeploymentConfig
+    - apiGroups:
+      - argoproj.io
+      clusters:
+      - '*'
+      kinds:
+      - Application
+    - apiGroups:
+      - ''
+      - image.openshift.io
+      clusters:
+      - '*'
+      kinds:
+      - ImageStream
+    - apiGroups:
+      - networking.k8s.io
+      clusters:
+      - '*'
+      kinds:
+      - Ingress
+    - apiGroups:
+      - route.openshift.io
+      clusters:
+      - '*'
+      kinds:
+      - Route
+    - apiGroups:
+      - tekton.dev
+      clusters:
+      - '*'
+      kinds:
+      - Pipeline
+      - Tasks
+  sso:
+    dex:
+      openShiftOAuth: true
+    provider: dex
+  rbac:
+    policy: |
+      g, system:cluster-admins, role:admin
+      g, cluster-admins, role:admin
+      g, {{ .Values.groupName }}, role:admin

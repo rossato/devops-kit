@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: devteam
+  namespace: openshift-gitops
+spec:
+  source:
+    repoURL: http://gogs-gogs.apps.ocp-sno.lab.home/ken/gitops.git
+    targetRevision: HEAD
+    path: 2-infra/common/application-gitops
+    helm:
+      releaseName: devteam-gitops
+      values: |
+        teamGitops:
+          repoURL: http://gogs-gogs.apps.ocp-sno.lab.home/ken/gitops.git
+          path: 3-apps/quarkus-getting-started
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: openshift-gitops

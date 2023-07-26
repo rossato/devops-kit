@@ -7,5 +7,6 @@ resources:
 - ../../common/app-gitops
 - ../../apps/demo
 - ../../apps/quarkus-getting-started
+- ../../apps/devteam
 patchesStrategicMerge:
 - ingress-domain.yaml
