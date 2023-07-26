@@ -4,6 +4,7 @@ metadata:
   name: devteam
   namespace: openshift-gitops
 spec:
+  project: default
   source:
     repoURL: http://gogs-gogs.apps.ocp-sno.lab.home/ken/gitops.git
     targetRevision: HEAD
