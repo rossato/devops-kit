@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: quarkus-ci
 spec:
-  project: quarkus-getting-started
+  project: default
   sources:
   - repoURL: http://gogs-gogs.apps.ocp-sno.lab.home/ken/gitops.git
     targetRevision: HEAD
