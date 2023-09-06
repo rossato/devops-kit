@@ -12,6 +12,13 @@ spec:
     helm:
       releaseName: devteam-gitops
       values: |
+        groups:
+          - name: devteam
+            role: edit
+            argorole: admin
+        namespaces:
+          - name: devteam-dev
+          - name: devteam-test
         teamGitops:
           repoURL: http://gogs-gogs.apps.ocp-sno.lab.home/ken/gitops.git
           path: 3-apps/quarkus-getting-started

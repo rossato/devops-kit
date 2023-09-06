@@ -78,4 +78,6 @@ spec:
     policy: |
       g, system:cluster-admins, role:admin
       g, cluster-admins, role:admin
-      g, {{ .Values.groupName }}, role:admin
+      {{- range .Values.groups }}
+      g, {{ .name }}, role:{{ .argorole | default "admin" }}
+      {{- end }}

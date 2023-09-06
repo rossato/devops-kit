@@ -1,18 +1,21 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-groupName: devteam
+# groups:
+#   - name: devteam
+#     role: edit
+#     argorole: admin
 
 infraGitops: openshift-gitops
 gitopsNamespace: devteam-gitops
 
-teamGitops:
-  repoURL: https://github.com/devteam/gitops.git
-  targetRevision: HEAD
-#  path: gitops/
+# teamGitops:
+#   repoURL: https://github.com/devteam/gitops.git
+#   targetRevision: HEAD
+#   path: gitops/
 
-namespaces:
-  - name: devteam-dev
-    quota: medium
-  - name: devteam-test
-    quota: medium
+# namespaces:
+#   - name: devteam-dev
+#     quota: medium
+#   - name: devteam-test
+#     quota: medium
