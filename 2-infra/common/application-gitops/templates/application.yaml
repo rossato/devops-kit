@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ $.Values.groupName }}
+  name: team-app-of-apps
   namespace: {{ $.Values.gitopsNamespace }}
 spec:
   project: default
