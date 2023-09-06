@@ -4,7 +4,6 @@ metadata:
   name: clusterconf
 resources:
 - ../../archetypes/sno
-- ../../common/app-gitops
 - ../../apps/devteam
 patchesStrategicMerge:
 - ingress-domain.yaml
