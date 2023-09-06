@@ -5,6 +5,7 @@ metadata:
   name: {{ $.Values.groupName }}
   namespace: {{ $.Values.gitopsNamespace }}
 spec:
+  project: default
   source:
 {{ . | toYaml | indent 4 }}
   destination:
