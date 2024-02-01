@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: demo
-  namespace: app-gitops
+  namespace: openshift-gitops
 spec:
   project: demo
   source:
