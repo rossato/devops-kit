@@ -18,8 +18,7 @@ spec:
     spec:
       containers:
         - name: demo
-          image: >-
-            default-route-openshift-image-registry.apps.ocp-sno.lab.home/http-test/httpd-sample@sha256:e6fe43b351a7eb6c55341ead18726e111f17f13aa3c0a1adca234fc964650e33
+          image: docker.io/bitnami/apache
           ports:
             - containerPort: 8080
               protocol: TCP
