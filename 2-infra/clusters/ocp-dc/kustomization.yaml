@@ -4,3 +4,5 @@ metadata:
   name: clusterconf
 resources:
 - acm-argocd-policy.yaml
+- managedclustersetbinding.yaml
+- placement.yaml
