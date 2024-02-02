@@ -7,7 +7,7 @@ spec:
   project: demo
   source:
     repoURL: http://gogs-gogs.apps.ocp-sno.lab.home/ken/gitops.git
-    targetRevision: ring1
+    targetRevision: HEAD
     path: 3-apps/demo
   destination:
     server: https://kubernetes.default.svc
