@@ -1,0 +1,9 @@
+- name: Deploy acme-gcp certificate authority
+  kubernetes.core.k8s:
+    template:
+      - acme-gcp/credentialsrequest.yaml
+      - acme-gcp/clusterissuer.yaml
+
+- import_tasks: certificate_verify.yml
+  vars:
+    certman_certificate_issuer_name: acme-gcp

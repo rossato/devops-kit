@@ -1,0 +1,9 @@
+- name: Deploy certificate authority
+  kubernetes.core.k8s:
+    template:
+      - certificate-authority/secret.yaml
+      - certificate-authority/clusterissuer.yaml
+
+- import_tasks: certificate_verify.yml
+  vars:
+    certman_certificate_issuer_name: certificate-authority

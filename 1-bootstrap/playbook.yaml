@@ -4,6 +4,7 @@
     cluster_name: ocp-sno.lab.home
     git_src: http://gogs-gogs.apps.ocp-sno.lab.home/ken/gitops.git
     disconnected: false
+    agent_mode: true
   gather_facts: false
   tasks:
     - import_role:
@@ -11,5 +12,14 @@
         tasks_from: deploy.yml
       when: disconnected
     - import_role:
+        name: openshift_cert_manager
+        tasks_from: direct_deploy.yml
+      when: agent_mode
+    - import_role:
+        name: openshift_gitops_agent
+        tasks_from: deploy.yml
+      when: agent_mode
+    - import_role:
         name: openshift_gitops
         tasks_from: deploy.yml
+      when: not agent_mode
