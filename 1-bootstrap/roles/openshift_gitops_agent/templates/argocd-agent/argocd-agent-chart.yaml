@@ -66,7 +66,7 @@ data:
   # agent.principal.address: The remote address of the principal to connect
   # to. Can be a DNS name, an IPv4 address or an IPv6 address.
   # Default: ""
-  agent.server.address: argocd-agent-principal-argocd.apps.ocp-sno.lab.home
+  agent.server.address: argocd-agent-principal-argocd.apps.{{ ocp_base_domain }}
   # agent.server.port: The remote port of the principal to connect to.
   # Default: "443"
   agent.server.port: "443"
