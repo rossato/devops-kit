@@ -18,5 +18,5 @@
           {{ ocp_infrastructure_result.resources.0.status.apiServerURL | regex_replace("https://api\.[^.]*\.(.*):6443", "\1") }}
         ocp_cluster_name: >-
           {{ ocp_infrastructure_result.resources.0.status.apiServerURL | regex_replace("https://api\.([^.]*)\..*:6443", "\1") }}
-    - debug:
-        var: ocp_cluster_domain
+- debug:
+    var: ocp_base_domain
