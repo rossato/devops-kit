@@ -16,7 +16,7 @@
 - name: Retrieve Spoke Agent Certificate
   kubernetes.core.k8s_info:
     kind: Secret
-    name: argocd-agent-{{ ocp_cluster_name }}
+    name: argocd-agent-{{ ocp_preferred_cluster_name }}
     namespace: "{{ gitops_instance_namespace }}"
   register: hub_client_tls_output
   until:

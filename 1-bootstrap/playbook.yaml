@@ -1,7 +1,8 @@
 ---
 - hosts: localhost
   vars:
-    cluster_name: ocp-sno.lab.home
+#   Leave blank to derive from DNS name
+#   cluster_name: ocp-sno
     git_src: git@github.com:rossato/devops-kit.git
     disconnected: false
     agent_mode: true

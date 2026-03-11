@@ -373,7 +373,7 @@ metadata:
   namespace: "{{ gitops_agent_namespace }}"
 data:
   KUSTOMIZE_PLUGIN_HOME: /etc/kustomize/plugin
-  CLUSTER_NAME: "{{ ocp_cluster_name }}"
+  CLUSTER_NAME: "{{ ocp_preferred_cluster_name }}"
   CLUSTER_BASE_DOMAIN: "{{ ocp_base_domain }}"
           # all created clusters base domain should be <cluster-name>.<PLATFORM_BASE_DOMAIN> 
   PLATFORM_BASE_DOMAIN: "{{ ocp_platform_domain }}"

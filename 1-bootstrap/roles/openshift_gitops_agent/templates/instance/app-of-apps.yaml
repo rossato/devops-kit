@@ -7,6 +7,6 @@ spec:
   project: "{{ gitops_app_project }}"
   source:
     repoURL: "{{ git_src }}"
-    path: 2-infra/clusters/{{ cluster_name }}
+    path: 2-infra/clusters/{{ ocp_base_domain }}
   destination:
     server: "https://kubernetes.default.svc"

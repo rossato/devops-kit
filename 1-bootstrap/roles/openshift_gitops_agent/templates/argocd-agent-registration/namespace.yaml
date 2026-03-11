@@ -6,4 +6,4 @@ metadata:
     openshift.io/display-name: ArgoCD Replication for Hub Agent 
   labels:
     openshift.io/cluster-monitoring: 'true'
-  name: "{{ gitops_agent_namespace }}-{{ ocp_cluster_name }}"
+  name: "{{ gitops_agent_namespace }}-{{ ocp_preferred_cluster_name }}"
