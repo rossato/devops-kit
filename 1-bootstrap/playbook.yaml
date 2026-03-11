@@ -2,7 +2,7 @@
 - hosts: localhost
   vars:
     cluster_name: ocp-sno.lab.home
-    git_src: http://gogs-gogs.apps.ocp-sno.lab.home/ken/gitops.git
+    git_src: git@github.com:rossato/devops-kit.git
     disconnected: false
     agent_mode: true
   gather_facts: false

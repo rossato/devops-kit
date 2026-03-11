@@ -39,6 +39,7 @@
       - argocd-agent/argocd-agent-client-tls.yaml
       - argocd-agent/argocd-agent-cluster-admin-role.yaml
       - argocd-agent/argocd.yaml
+      - argocd-agent/repo-secret.yaml
 
 - name: Waiting since {{ lookup("pipe", "date +%r") }} for {{ gitops_instance_name }} deployment to complete
   kubernetes.core.k8s_info:

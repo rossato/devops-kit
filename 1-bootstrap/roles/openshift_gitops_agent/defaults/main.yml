@@ -26,5 +26,7 @@ gitops_create_cloudflare_tunnel: false
 
 gitops_autogitops_enabled: false
 
+gitops_ssh_key_file: id_ed25519
+
 rhsso_instance_namespace: rhsso
 rhsso_instance_name: keycloak

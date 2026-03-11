@@ -12,6 +12,7 @@
       - argocd-agent-principal/cluster-rolebinding.yaml
       - argocd-agent-principal/console-link.yaml
       - argocd-agent-principal/principal-cert.yaml
+      - argocd-agent-principal/repo-secret.yaml
 
 - name: Waiting since {{ lookup("pipe", "date +%r") }} for {{ gitops_instance_name }} deployment to complete
   kubernetes.core.k8s_info:
