@@ -2,8 +2,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: app-of-apps
-  namespace: {{ gitops_instance_namespace }}
+  namespace: "{{ gitops_instance_namespace }}"
 spec:
+  project: default
+  destination:
+    server: "https://kubernetes.default.svc"
   source:
     repoURL: {{ git_src }}
-    path: 2-infra/clusters/{{ cluster_name }}
+    path: 2-infra/clusters/{{ ocp_base_domain }}
