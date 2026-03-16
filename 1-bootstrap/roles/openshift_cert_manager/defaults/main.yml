@@ -1,8 +1,8 @@
 certman_operator_subscription_channel: ''
 certman_operator_subscription_starting_csv: ''
+certman_operator_subscription_approval: Manual
 
 certman_operator_namespace: cert-manager-operator
-
 certman_instance_namespace: cert-manager
 
 # An intent based logging for an overall component. Allowed values

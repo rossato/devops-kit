@@ -7,6 +7,15 @@
 
 - import_role:
     name: openshift_common
+    tasks_from: install_plan_approve_subtasks.yml
+  vars:
+    subscription_name: cert-manager-operator
+    subscription_namespace: '{{ certman_operator_namespace }}'
+  tags: osvirt_operator
+  when: certman_operator_subscription_approval == "Manual"
+
+- import_role:
+    name: openshift_common
     tasks_from: wait_for_operator.yml
   vars:
     subscription_name: cert-manager-operator

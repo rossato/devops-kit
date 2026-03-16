@@ -5,7 +5,7 @@ metadata:
   namespace: {{ certman_operator_namespace }}
 spec:
   channel: {{ certman_operator_subscription_channel | default('""', true) }}
-  installPlanApproval: Manual
+  installPlanApproval: {{ certman_operator_subscription_approval }}
   name: openshift-cert-manager-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
