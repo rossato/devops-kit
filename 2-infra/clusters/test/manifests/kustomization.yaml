@@ -9,3 +9,5 @@ patches:
      op: replace
      path: /data/route
      value: foo.baseline.test
+   target:
+     kind: ConfigMap
