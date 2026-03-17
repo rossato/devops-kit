@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-cm
+  namespace: test
+data:
+  route: foo.apps.nodomain.com

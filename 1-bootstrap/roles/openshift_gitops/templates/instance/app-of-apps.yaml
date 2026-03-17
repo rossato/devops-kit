@@ -8,5 +8,6 @@ spec:
   destination:
     server: "https://kubernetes.default.svc"
   source:
-    repoURL: {{ git_src }}
-    path: 2-infra/clusters/{{ ocp_base_domain }}
+    repoURL: "{{ git_src }}"
+    path: 2-infra/clusters/test
+    targetRevision: temp-acm-policy
