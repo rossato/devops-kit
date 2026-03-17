@@ -8,6 +8,6 @@ patches:
  - patch: |-
      - op: replace
        path: /data/route
-       value: foo.baseline.test
+       value: argocd-agent-principal.apps.${CLUSTER_BASE_DOMAIN}
    target:
      kind: ConfigMap
