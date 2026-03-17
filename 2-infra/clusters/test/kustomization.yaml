@@ -3,9 +3,4 @@ kind: Kustomization
 metadata:
   name: clusterconf
 resources:
-- ../../archetypes/sno
-- ../../common/app-gitops
-- ../../apps/demo
-- ../../apps/devteam
-patchesStrategicMerge:
-- ingress-domain.yaml
+- policy-generator.yaml
