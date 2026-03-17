@@ -6,8 +6,8 @@ resources:
 - config-map.yaml
 patches:
  - patch: |-
-     op: replace
-     path: /data/route
-     value: foo.baseline.test
+     - op: replace
+       path: /data/route
+       value: foo.baseline.test
    target:
      kind: ConfigMap
