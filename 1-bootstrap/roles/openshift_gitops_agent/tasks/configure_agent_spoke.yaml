@@ -32,10 +32,8 @@
   kubernetes.core.k8s:
     template: 
       - argocd-agent/namespace.yaml
-      - argocd-agent/agent-redis-networkpolicy.yaml
       - argocd-agent/application-controller-cluster-admin-role.yaml
       - argocd-agent/argocd-agent-ca.yaml
-      - argocd-agent/argocd-agent-chart.yaml
       - argocd-agent/argocd-agent-client-tls.yaml
       - argocd-agent/argocd-agent-cluster-admin-role.yaml
       - argocd-agent/argocd.yaml

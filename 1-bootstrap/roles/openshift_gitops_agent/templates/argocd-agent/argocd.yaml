@@ -5,6 +5,18 @@ metadata:
   name: "{{ gitops_instance_name }}"
   namespace: "{{ gitops_agent_namespace }}"
 spec:
+  argoCDAgent:
+    agent:
+      enabled: true
+      creds: mtls:CN=([^,]+)
+      client:
+        enableCompression: true
+        enableWebSocket: false
+        mode: autonomous
+        principalServerAddress: argocd-agent-principal-{{ gitops_instance_namespace }}.apps.{{ ocp_base_domain }}
+      tls:
+        rootCASecretName: argocd-agent-ca
+        secretName: argocd-agent-client-tls
   resourceTrackingMethod: annotation
   kustomizeBuildOptions: --enable-alpha-plugins --load-restrictor LoadRestrictionsNone
   extraConfig:
@@ -346,7 +358,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: setenv-cmp-plugin
-  namespace: argocd-agent
+  namespace: "{{ gitops_agent_namespace }}"
 data:
   plugin.yaml: |
     apiVersion: argoproj.io/v1alpha1
