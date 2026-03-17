@@ -8,4 +8,4 @@ patches:
  - patch: |-
      op: replace
      path: /data/route
-     value: {{hub (lookup "route.openshift.io/v1" "argocd" "argocd-agent-principal").spec.host hub}}
+     value: '{{hub (lookup "route.openshift.io/v1" "argocd" "argocd-agent-principal").spec.host hub}}'
