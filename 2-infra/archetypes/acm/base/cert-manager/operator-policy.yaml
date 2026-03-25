@@ -1,7 +1,7 @@
 apiVersion: policy.open-cluster-management.io/v1beta1
 kind: OperatorPolicy
 metadata:
-  name: install-cert-manager-all-stable
+  name: install-cert-manager
 spec:
   complianceType: musthave
   remediationAction: enforce
