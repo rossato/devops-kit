@@ -13,6 +13,7 @@ policyDefaults:
           operator: In
           values:
             - stable
+  generatePlacementWhenInSet: true
   policySets:
   - operators-stable
 policies:
