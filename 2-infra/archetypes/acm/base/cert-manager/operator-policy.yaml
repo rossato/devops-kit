@@ -13,6 +13,7 @@ spec:
     source: redhat-operators
     sourceNamespace: openshift-marketplace
   operatorGroup:
+    name: cert-manager-operator
     targetNamespaces:
       - cert-manager-operator
   upgradeApproval: Automatic
