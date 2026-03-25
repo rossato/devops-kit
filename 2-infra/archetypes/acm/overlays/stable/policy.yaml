@@ -1,0 +1,18 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+
+policyDefaults:
+  placement:
+    labelSelector:
+      matchExpressions:
+        - key: operator-lifecycle
+          operator: In
+          values:
+            - stable
+  policySets:
+  - operators-stable
+policies:
+  - name: cert-manager-stable
+    disabled: false
+    manifests:
+      - path: cert-manager
