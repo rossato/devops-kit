@@ -1,9 +1,7 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: PolicyGenerator
 metadata:
-  name: operators
-placementBindingDefaults:
-  name: operators
+  name: operators-stable
 policyDefaults:
   namespace: open-cluster-management-global-set
   placement:
@@ -14,7 +12,7 @@ policyDefaults:
           values:
             - stable
   policySets:
-  - operators
+  - operators-stable
 policies:
   - name: cert-manager
     disabled: false
