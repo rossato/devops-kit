@@ -16,3 +16,4 @@ spec:
     targetNamespaces:
       - cert-manager-operator
   upgradeApproval: Automatic
+  versions: []
