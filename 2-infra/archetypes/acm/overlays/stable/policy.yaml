@@ -1,6 +1,7 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: PolicyGenerator
-
+metadata:
+  name: operators-all-stable
 policyDefaults:
   namespace: open-cluster-management-global-set
   placement:
